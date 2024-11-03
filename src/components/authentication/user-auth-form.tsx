@@ -8,18 +8,36 @@ import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-
 import type { AuthForm } from './validations/auth'
 
 import { ImSpinner8 } from 'solid-icons/im'
+import { supabase } from '~/utils/supabase'
+
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+} from '~/components/ui/alert-dialog'
+import { createSignal } from 'solid-js'
+
+import { useNavigate } from '@solidjs/router'
 
 export function UserAuthForm() {
   const [authForm, { Form, Field }] = createForm<AuthForm>()
 
-  const handleSubmit: SubmitHandler<AuthForm> = (data) => {
-    try {
-      console.log(data)
-    } catch (error) {
-      console.error((error as Error).message)
-    }
+  const [errorMessage, setErrorMessage] = createSignal<string | null>(null)
+  const [openAlert, setOpenAlert] = createSignal(false)
 
-    return new Promise((resolve) => setTimeout(resolve, 2000))
+  const navigate = useNavigate()
+
+  const handleSubmit: SubmitHandler<AuthForm> = async (fieldData) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: fieldData.email,
+      password: fieldData.password,
+    })
+
+    if (error) {
+      setErrorMessage(error.message)
+      setOpenAlert(true)
+    }
   }
 
   return (
@@ -70,6 +88,13 @@ export function UserAuthForm() {
           </Button>
         </Grid>
       </Form>
+
+      <AlertDialog open={openAlert()} onOpenChange={setOpenAlert}>
+        <AlertDialogContent>
+          <AlertDialogTitle>Error!</AlertDialogTitle>
+          <AlertDialogDescription>{errorMessage()}</AlertDialogDescription>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }
