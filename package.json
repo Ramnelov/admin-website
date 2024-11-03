@@ -31,11 +31,14 @@
   },
   "dependencies": {
     "@kobalte/core": "^0.13.7",
+    "@modular-forms/solid": "^0.24.1",
     "@solidjs/router": "^0.15.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.8.11",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "valibot": "^0.42.1"
   }
 }
