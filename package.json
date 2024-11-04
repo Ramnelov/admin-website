@@ -1,7 +1,6 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "admin-website",
+  "version": "0.0.1",
   "scripts": {
     "start": "vite",
     "dev": "vite",
