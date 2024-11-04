@@ -1,5 +1,5 @@
 import type { SubmitHandler } from '@modular-forms/solid'
-import { createForm, email, required, minLength } from '@modular-forms/solid'
+import { createForm, email, minLength, required } from '@modular-forms/solid'
 
 import { Button } from '~/components/ui/button'
 import { Grid } from '~/components/ui/grid'
@@ -10,13 +10,13 @@ import type { AuthForm } from './validations/auth'
 import { ImSpinner8 } from 'solid-icons/im'
 import { supabase } from '~/utils/supabase'
 
+import { createSignal } from 'solid-js'
 import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTitle,
 } from '~/components/ui/alert-dialog'
-import { createSignal } from 'solid-js'
 
 export function UserAuthForm() {
   const [authForm, { Form, Field }] = createForm<AuthForm>()

@@ -1,12 +1,12 @@
 import { createResource, ParentComponent, Suspense } from 'solid-js'
 
 import { ColorModeProvider, ColorModeScript, createLocalStorageManager } from '@kobalte/core'
-import PageContainer from '~/components/page-container'
 import { Session } from '@supabase/supabase-js'
-import { supabase } from '~/utils/supabase'
-import { fetchSession } from '~/data/data-fetch'
-import { SessionDataProvider } from '~/data/data-context'
 import { Nav } from '~/components/nav'
+import PageContainer from '~/components/page-container'
+import { SessionDataProvider } from '~/data/data-context'
+import { fetchSession } from '~/data/data-fetch'
+import { supabase } from '~/utils/supabase'
 
 // await supabase.auth.signOut()
 

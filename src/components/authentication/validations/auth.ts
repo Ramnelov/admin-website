@@ -1,5 +1,5 @@
 import type { Input } from 'valibot'
-import { email, object, string, minLength } from 'valibot'
+import { email, minLength, object, string } from 'valibot'
 
 export const AuthSchema = object({
   email: string([email()]),

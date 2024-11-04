@@ -1,6 +1,6 @@
 import { Session } from '@supabase/supabase-js'
+import type { JSX, Resource } from 'solid-js'
 import { createContext, useContext } from 'solid-js'
-import type { Resource, JSX } from 'solid-js'
 
 const SessionDataContext = createContext<Resource<Session>>()
 

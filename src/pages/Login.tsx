@@ -1,6 +1,6 @@
+import { useNavigate } from '@solidjs/router'
 import { ImSpinner8 } from 'solid-icons/im'
 import { Component, createEffect, Show } from 'solid-js'
-import { useNavigate } from '@solidjs/router'
 
 import { UserAuthForm } from '~/components/authentication/user-auth-form'
 import { useSessionData } from '~/data/data-context'
