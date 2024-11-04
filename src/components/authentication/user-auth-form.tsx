@@ -18,22 +18,17 @@ import {
 } from '~/components/ui/alert-dialog'
 import { createSignal } from 'solid-js'
 
-import { useNavigate } from '@solidjs/router'
-
 export function UserAuthForm() {
   const [authForm, { Form, Field }] = createForm<AuthForm>()
 
-  const [errorMessage, setErrorMessage] = createSignal<string | null>(null)
   const [openAlert, setOpenAlert] = createSignal(false)
-
-  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = createSignal('')
 
   const handleSubmit: SubmitHandler<AuthForm> = async (fieldData) => {
     const { error } = await supabase.auth.signInWithPassword({
       email: fieldData.email,
       password: fieldData.password,
     })
-
     if (error) {
       setErrorMessage(error.message)
       setOpenAlert(true)
@@ -84,13 +79,12 @@ export function UserAuthForm() {
           </Field>
           <Button type="submit" disabled={authForm.submitting}>
             {authForm.submitting && <ImSpinner8 class="mr-2 size-4 animate-spin" />}
-            Login
+            Log in
           </Button>
         </Grid>
       </Form>
-
       <AlertDialog open={openAlert()} onOpenChange={setOpenAlert}>
-        <AlertDialogContent>
+        <AlertDialogContent class="w-11/12 sm:max-w-md">
           <AlertDialogTitle>Error!</AlertDialogTitle>
           <AlertDialogDescription>{errorMessage()}</AlertDialogDescription>
         </AlertDialogContent>
