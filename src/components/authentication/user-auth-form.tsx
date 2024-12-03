@@ -77,7 +77,7 @@ export function UserAuthForm() {
               </TextField>
             )}
           </Field>
-          <Button type="submit" disabled={authForm.submitting}>
+          <Button type="submit" disabled={authForm.submitting} variant="outline">
             {authForm.submitting && <ImSpinner8 class="mr-2 size-4 animate-spin" />}
             Log in
           </Button>

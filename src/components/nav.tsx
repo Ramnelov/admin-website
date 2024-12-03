@@ -57,7 +57,7 @@ export const Nav: Component = () => {
             <DialogDescription>Are you sure you want to log out?</DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button type="submit" onClick={handleLogout}>
+            <Button type="submit" onClick={handleLogout} variant="outline">
               Log out
             </Button>
           </DialogFooter>
