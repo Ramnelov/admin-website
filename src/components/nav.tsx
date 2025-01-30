@@ -39,15 +39,18 @@ export const Nav: Component = () => {
     <>
       <nav class="fixed left-0 right-0 top-0 z-50 flex justify-start">
         <Show when={showLogout()}>
-          <Button
-            variant="outline"
-            class="m-2"
-            onClick={() => {
-              setIsOpen(true)
-            }}
-          >
-            Log out
-          </Button>
+          <div class="flex items-center">
+            <Button
+              variant="outline"
+              class="m-2"
+              onClick={() => {
+                setIsOpen(true)
+              }}
+            >
+              Log out
+            </Button>
+            <Show when={!sessionDataResource.error}>{sessionDataResource()?.user.email}</Show>
+          </div>
         </Show>
       </nav>
       <Dialog open={isOpen()} onOpenChange={setIsOpen}>

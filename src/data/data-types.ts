@@ -3,3 +3,7 @@ export interface Grade {
   scope: number
   grade: string
 }
+
+export interface Courses {
+  grades: Grade[]
+}
